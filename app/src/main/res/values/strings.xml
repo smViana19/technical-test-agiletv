@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">technical-test-agiletv</string>
+    <string name="app_name">Pokedex</string>
+    <string name="find_pokemon">Find Pokemon</string>
+    <string name="type_grass">Grass</string>
+    <string name="type_fire">Fire</string>
+    <string name="type_ghost">Ghost</string>
+    <string name="type_poison">Poison</string>
+    <string name="type_water">Water</string>
+    <string name="type_dragon">Dragon</string>
+    <string name="type_electric">Eletric</string>
+    <string name="type_fairy">Fairy</string>
+    <string name="type_ice">Ice</string>
+    <string name="type_bug">Bug</string>
+    <string name="type_fighting">Fighting</string>
+    <string name="type_normal">Normal</string>
+    <string name="type_steel">Steel</string>
+    <string name="type_psychic">Psychic</string>
+    <string name="type_ground">Ground</string>
+    <string name="type_flying">Flying</string>
+    <string name="type_rock">Rock</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="abilitiy">Ability</string>
+    <string name="search">Search</string>
+
+
 </resources>
