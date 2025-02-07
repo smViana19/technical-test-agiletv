@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samuel.technical_test_agiletv.data.remote.api.ApiPokemonDetailsService
 import com.samuel.technical_test_agiletv.data.remote.model.PokemonType
-import com.samuel.technical_test_agiletv.utils.weightMask
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

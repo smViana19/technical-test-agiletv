@@ -1,5 +1,6 @@
 package com.samuel.technical_test_agiletv.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,6 +20,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -25,14 +28,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.samuel.technical_test_agiletv.R
@@ -64,8 +72,11 @@ fun HomeScreen(
         }
       }
   ) {
+
     Row(
-      modifier = Modifier.fillMaxWidth(),
+      modifier = Modifier
+        .fillMaxWidth()
+        .zIndex(0.5f),
       horizontalArrangement = Arrangement.Center
     ) {
       OutlinedTextField(
@@ -73,8 +84,15 @@ fun HomeScreen(
         shape = RoundedCornerShape(50),
         singleLine = true,
         value = searchText,
-        label = {
-          Text("Find pokemon")
+        colors = TextFieldDefaults.colors(
+          focusedContainerColor = Color.Transparent,
+          unfocusedContainerColor = Color.Transparent,
+          focusedIndicatorColor = Color.Black,
+          focusedLabelColor = Color.Black
+        ),
+
+        placeholder = {
+          Text(text = stringResource(R.string.find_pokemon))
         },
         onValueChange = {
           searchText = it
@@ -108,9 +126,11 @@ fun HomeScreen(
     }
     Spacer(modifier = Modifier.height(16.dp))
 
-    if(pokemons.isNotEmpty()) {
+    if (pokemons.isNotEmpty()) {
       LazyColumn(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+          .fillMaxSize()
+          .zIndex(1f)
       ) {
         items(pokemons) { pokemon ->
           Row(
@@ -128,16 +148,31 @@ fun HomeScreen(
       Column(
         modifier = Modifier
           .fillMaxSize()
-          .padding(top = 24.dp),
+          .padding(top = 24.dp)
+          .zIndex(1f),
       ) {
         Row(
           modifier = Modifier.fillMaxWidth(),
           horizontalArrangement = Arrangement.Center
         ) {
-          Text(
-            text = "Nenhum pokemon foi encontrado.",
-            fontSize = 16.sp
-          )
+          Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+          ) {
+            Image(
+              modifier = Modifier.size(200.dp),
+              painter = painterResource(R.drawable.magikarp_not_found),
+              contentDescription = "Not found image"
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+              text = "Ops! Nenhum Pokémon foi encontrado.",
+              textAlign = TextAlign.Center,
+              fontSize = 20.sp,
+              color = Color(0xFF333333)
+            )
+          }
+
         }
       }
     }
@@ -150,7 +185,10 @@ fun HomeScreen(
 }
 
 
-@Preview(showBackground = true)
+@Preview(
+  showBackground = true,
+//  device = "spec:width=1280dp,height=800dp,dpi=480"
+)
 @Composable
 private fun HomeScreenPreview() {
   TechnicaltestagiletvTheme {

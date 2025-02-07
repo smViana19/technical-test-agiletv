@@ -19,7 +19,7 @@ import androidx.compose.ui.zIndex
 import com.samuel.technical_test_agiletv.ui.theme.TechnicaltestagiletvTheme
 
 @Composable
-fun AppLoader(modifier: Modifier = Modifier) {
+fun AppLoader() {
   Box(
     modifier = Modifier
       .fillMaxSize()
