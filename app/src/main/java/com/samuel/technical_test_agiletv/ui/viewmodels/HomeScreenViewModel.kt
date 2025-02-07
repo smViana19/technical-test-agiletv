@@ -26,6 +26,9 @@ class HomeScreenViewModel @Inject constructor(
   private val apiPokemonService: ApiPokemonService
 ) : ViewModel() {
 
+//  val pokemonsSteFlow: StateFlow<List<ApiPokemonResults>> get() = _filteredPokemons
+
+
   private val _filteredPokemons = MutableStateFlow<List<ApiPokemonResults>>(emptyList())
   val filteredPokemons: StateFlow<List<ApiPokemonResults>> = _filteredPokemons
 
