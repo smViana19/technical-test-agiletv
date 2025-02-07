@@ -27,7 +27,7 @@ Android application developed as part of a technical test.
 Clone the repository and navigate to the project directory:
 
 ```bash
-https://github.com/smViana19/technical-test-agiletv.git
+git clone https://github.com/smViana19/technical-test-agiletv.git
 ```
 
 ### 2. Open the project in Android Studio
