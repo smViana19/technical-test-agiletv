@@ -125,7 +125,7 @@ fun PokemonDetailsScreen(
             .padding(start = 8.dp)
         ) {
           items(pokemonDetailsViewModel.pokemonTypes.value) { type ->
-            val pokemonType = PokemonType.fromName(type.type.name)
+            val pokemonType = PokemonType.fromApiName(type.type.name)
             CardPokemonType(pokemonType)
           }
         }

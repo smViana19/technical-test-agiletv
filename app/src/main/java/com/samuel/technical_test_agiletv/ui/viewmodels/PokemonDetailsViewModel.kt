@@ -10,6 +10,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the Pokemon Details Screen, responsible for fetching and managing the details of a specific Pokémon.
+ *
+ * This ViewModel interacts with the [ApiPokemonDetailsService] to retrieve detailed information about a Pokémon
+ * and exposes this data to the UI through [MutableState].
+ *
+ * @property apiPokemonDetailsService The service used to fetch Pokémon details from the API.
+ */
+
 @HiltViewModel
 class PokemonDetailsViewModel @Inject constructor(
   private val apiPokemonDetailsService: ApiPokemonDetailsService
@@ -35,6 +44,21 @@ class PokemonDetailsViewModel @Inject constructor(
 
   private val _isLoading = mutableStateOf(false)
   val isLoading: MutableState<Boolean> = _isLoading
+
+
+  /**
+   * Fetches the details of a Pokémon with the given name.
+   *
+   * This function retrieves the Pokémon's details from the [ApiPokemonDetailsService] and updates the
+   * corresponding states: [pokemonSprites], [pokemonName], [pokemonHeight], [pokemonWeight],
+   * [pokemonTypes], and [pokemonAbilityName]. It also manages the [isLoading] state to indicate
+   * when the data is being loaded.
+   *
+   * The function iterates through the Pokémon's abilities and sets the [pokemonAbilityName] to the
+   * name of the first non-hidden ability found.
+   *
+   * @param name The name of the Pokémon to fetch details for.
+   */
 
   fun getPokemonDetails(name: String) {
     viewModelScope.launch {

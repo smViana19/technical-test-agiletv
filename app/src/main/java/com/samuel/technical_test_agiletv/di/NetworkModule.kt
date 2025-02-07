@@ -92,6 +92,21 @@ object NetworkModule {
     return retrofit.create(ApiPokemonService::class.java)
   }
 
+  /**
+   * # provideApiPokemonsService
+   *
+   * Provides an instance of [ApiPokemonDetailsService].
+   *
+   * [ApiPokemonDetailsService] is an interface that defines the API endpoints
+   * for interacting with about the Pokemon selected.
+   *
+   * This function uses the provided [Retrofit] instance to create
+   * an implementation of the [ApiPokemonDetailsService] interface.
+   *
+   * @param retrofit The [Retrofit] instance to use for creating the API service.
+   * @return An instance of [ApiPokemonDetailsService].
+   */
+
   @Provides
   @Singleton
   fun provideApiPokemonDetailsService(retrofit: Retrofit): ApiPokemonDetailsService {

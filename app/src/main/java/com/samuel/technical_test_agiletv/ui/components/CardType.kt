@@ -21,6 +21,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.samuel.technical_test_agiletv.R
 
+/**
+ * Shows the different types of Pokémon, each with its own color, icon, and display name.
+ *
+ * This sealed class ensures that all possible Pokémon types are known at compile time,
+ * allowing for exhaustive `when` statements and preventing the creation of new types
+ * outside of this class.
+ *
+ * @property color The color associated with this Pokémon type.
+ * @property icon The drawable resource ID for the icon representing this Pokémon type.
+ * @property displayName The string resource ID for the display name of this Pokémon type.
+ */
+
 
 sealed class PokemonType(val color: Color, @DrawableRes val icon: Int, @StringRes val displayName: Int) {
   data object Water : PokemonType(Color(0xFF0B6DC3), R.drawable.water, R.string.type_water)
@@ -42,7 +54,13 @@ sealed class PokemonType(val color: Color, @DrawableRes val icon: Int, @StringRe
   data object Flying : PokemonType(Color(0xFFA890F0), R.drawable.flying, R.string.type_flying)
 
   companion object {
-    fun fromName(name: String): PokemonType {
+    /**
+     * Returns the [PokemonType] corresponding to the given name.
+     *
+     * @param name The name of the Pokémon type (case-insensitive).
+     * @return The corresponding [PokemonType], or [Normal] if the name is not recognized.
+     */
+    fun fromApiName(name: String): PokemonType {
       return when (name.lowercase()) {
         "water" -> Water
         "dragon" -> Dragon
