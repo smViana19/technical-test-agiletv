@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pokedex</string>
+    <string name="app_name">PokeApp</string>
     <string name="find_pokemon">Procurar Pokémon</string>
     <string name="type_grass">Grama</string>
     <string name="type_fire">Fogo</string>
