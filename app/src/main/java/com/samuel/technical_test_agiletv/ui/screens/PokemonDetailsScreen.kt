@@ -36,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
+import com.samuel.technical_test_agiletv.R
 import com.samuel.technical_test_agiletv.data.mocks.ApiPokemonDetailsServiceMock
 import com.samuel.technical_test_agiletv.ui.components.AppLoader
 import com.samuel.technical_test_agiletv.ui.components.CardPokemonType
@@ -146,7 +148,7 @@ fun PokemonDetailsScreen(
             horizontalAlignment = Alignment.CenterHorizontally
           ) {
             Text(
-              text = "Altura",
+              text = stringResource(R.string.height),
               fontSize = 18.sp,
               color = Color.Gray
             )
@@ -163,7 +165,7 @@ fun PokemonDetailsScreen(
                 modifier = Modifier
                   .padding(16.dp),
                 text = "${heightMask(pokemonDetailsViewModel.pokemonHeight.value)} m",
-                fontSize = 18.sp,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Center,
                 color = Color.Black,
               )
@@ -175,7 +177,7 @@ fun PokemonDetailsScreen(
             horizontalAlignment = Alignment.CenterHorizontally
           ) {
             Text(
-              text = "Peso",
+              text = stringResource(R.string.weight),
               fontSize = 18.sp,
               color = Color.Gray
             )
@@ -192,7 +194,7 @@ fun PokemonDetailsScreen(
                 modifier = Modifier
                   .padding(16.dp),
                 text = "${weightMask(pokemonDetailsViewModel.pokemonWeight.value)} kg",
-                fontSize = 18.sp,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Center,
                 color = Color.Black,
               )
@@ -204,7 +206,7 @@ fun PokemonDetailsScreen(
             horizontalAlignment = Alignment.CenterHorizontally
           ) {
             Text(
-              text = "Habilidade",
+              text = stringResource(R.string.abilitiy),
               fontSize = 18.sp,
               color = Color.Gray
             )
@@ -222,7 +224,7 @@ fun PokemonDetailsScreen(
                   .padding(16.dp),
                 text = pokemonDetailsViewModel.pokemonAbilityName.value,
                 textAlign = TextAlign.Center,
-                fontSize = 18.sp,
+                fontSize = 16.sp,
                 color = Color.Black,
               )
             }

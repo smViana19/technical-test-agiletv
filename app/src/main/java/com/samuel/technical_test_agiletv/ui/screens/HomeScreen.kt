@@ -1,5 +1,6 @@
 package com.samuel.technical_test_agiletv.ui.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -16,10 +17,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -50,17 +55,81 @@ import com.samuel.technical_test_agiletv.ui.components.AppLoader
 import com.samuel.technical_test_agiletv.ui.navigation.NavigationScreens
 import com.samuel.technical_test_agiletv.ui.theme.TechnicaltestagiletvTheme
 import com.samuel.technical_test_agiletv.ui.viewmodels.HomeScreenViewModel
+import kotlin.system.exitProcess
 
 @Composable
 fun HomeScreen(
   homeScreenViewModel: HomeScreenViewModel,
   navController: NavController
 ) {
+  var showExitDialog by remember { mutableStateOf(false) }
   var searchText by remember { mutableStateOf("") }
   val focusManager = LocalFocusManager.current
   val pokemons by homeScreenViewModel.filteredPokemons.collectAsState()
   LaunchedEffect(Unit) {
     homeScreenViewModel.getAllPokemons()
+  }
+  BackHandler {
+    showExitDialog = true
+  }
+
+  if (showExitDialog) {
+    AlertDialog(
+      containerColor = Color.White,
+      onDismissRequest = { showExitDialog = false },
+      title = {
+        Row(
+          modifier = Modifier.fillMaxWidth(),
+          horizontalArrangement = Arrangement.Center
+        ) {
+          Text(
+            text = "Sair",
+            color = Color(0xFF333333),
+            fontSize = 16.sp
+          )
+        }
+      },
+      text = {
+        Row(
+          modifier = Modifier.fillMaxWidth(),
+          horizontalArrangement = Arrangement.Center
+        ) {
+          Text(
+            text = "Tem certeza que deseja sair?",
+            color = Color(0xFF333333),
+            fontSize = 16.sp,
+          )
+        }
+      },
+      confirmButton = {
+        Button(
+          modifier = Modifier.fillMaxWidth(),
+          onClick = { exitProcess(0) },
+          colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFCD3131))
+        ) {
+          Text(
+            text = "Sim, sair",
+            fontSize = 14.sp,
+            color = Color.White
+          )
+        }
+
+      },
+      dismissButton = {
+        Column(
+          modifier = Modifier.fillMaxWidth(),
+          horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+          TextButton(onClick = { showExitDialog = false }) {
+            Text(
+              text = "Não cancelar",
+              fontSize = 14.sp,
+              color = Color(0xFF333333)
+            )
+          }
+        }
+      }
+    )
   }
   Column(
     modifier = Modifier
@@ -86,6 +155,7 @@ fun HomeScreen(
         value = searchText,
         colors = TextFieldDefaults.colors(
           focusedContainerColor = Color.Transparent,
+          focusedTextColor = Color.Black,
           unfocusedContainerColor = Color.Transparent,
           focusedIndicatorColor = Color.Black,
           focusedLabelColor = Color.Black
