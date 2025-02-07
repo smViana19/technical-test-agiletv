@@ -14,6 +14,8 @@ Android application developed as part of a technical test.
 - KDoc
 - Material Design 3
 - SOLID
+- Junit
+- Mockito
   
 ## Requirements
 - Android Studio (latest version recommended)
@@ -43,11 +45,8 @@ git clone https://github.com/smViana19/technical-test-agiletv.git
 - Connect an Android device or launch an emulator
 - Click ```Run``` (play icon) in Android Studio to compile and run the application
 
-## Project Structure
-
-The project is organized into layers to improve modularity and maintainability:
-- **data**  
-- **di**
-- **handler**
-- **ui**
-- **utils**
+## 👨‍💻 Developer 
+### Samuel Filipe Viana
+-  [LinkedIn](https://www.linkedin.com/in/samuel-viana-aab511266/)
+-  [Github](https://github.com/smViana19)
+-  [Email](samuelfilipevianadois@gmail.com)
