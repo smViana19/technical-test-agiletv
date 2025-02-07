@@ -37,9 +37,21 @@ android {
   buildFeatures {
     compose = true
   }
+  packagingOptions {
+    resources.excludes += listOf(
+      "META-INF/LICENSE.md",
+      "META-INF/LICENSE-notice.md",
+      "META-INF/LICENSE.txt",
+      "META-INF/NOTICE.md",
+      "META-INF/NOTICE.txt",
+      "META-INF/notice.txt",
+      "META-INF/ASL-2.0.txt"
+    )
+  }
 }
 
 dependencies {
+
 
   ksp(libs.hilt.android.compiler)
   implementation(libs.hilt.android)
@@ -61,8 +73,11 @@ dependencies {
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
   testImplementation(libs.junit)
+  testImplementation (libs.kotlinx.coroutines.test)
+  testImplementation(libs.mockk)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
+  androidTestImplementation (libs.mockk.android)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
